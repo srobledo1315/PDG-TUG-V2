@@ -1,102 +1,48 @@
-[]{#_bookmark0 label="_bookmark0"}**(Análisis de datos de prueba TUG
-para anlisis de variables espacio temporales en pacientes de parkinson
-)Time up & Go - TUG**
+<div align="center">
 
-> []{#_bookmark1 label="_bookmark1"} **Proyecto de Grado I**
->
-> **Juan José Arias Gallego**
->
-> **Esteban Guarin Valencia**
->
-> **Santiago Gómez Robledo**
->
-> **Heiner Danit Rincón Carrillo**
->
-> **Tutores Domiciano Rincón Andrés Navarro Universidad ICESI**
->
-> Ingeniería Telemática e Ingeniería de Sistemas
+# Análisis de Variables Espaciotemporales mediante la Prueba Timed Up & Go (TUG) en Pacientes con Enfermedad de Parkinson
 
-[Time up & Go - TUG 1](#_bookmark0)
+<br><br>
 
-[Proyecto de Grado I 1](#_bookmark1)
+**Juan José Arias Gallego, Esteban Guarin Valencia, Santiago Gómez Robledo y Heiner Danit Rincón Carrillo**
 
-[Lista de Acrónimos 2](#_bookmark2)
+<br>
 
-[Glosario de Términos 3](#glosario-de-tuxe9rminos)
+Ingeniería Telemática e Ingeniería de Sistemas, Universidad Icesi
 
-1. [Introducción 5](#introducciuxf3n)
+Proyecto de Grado I
 
-    1. [Planteamiento del problema 6](#planteamiento-del-problema)
+Tutores: Domiciano Rincón y Andrés Navarro
 
-2. [Objetivos 7](#objetivos)
+</div>
 
-    1. [Objetivo general 7](#objetivo-general)
+<div style="page-break-after: always;"></div>
 
-    <!-- -->
-
-    1. [Alcance 8](#alcance)
-
-3. [Antecedentes del proyecto 8](#antecedentes-del-proyecto)
-
-4. [Marco teórico 8](#marco-teuxf3rico)
-
-    1. [Enfermedad de Parkinson (EP) 8](#enfermedad-de-parkinson-ep)
-
-    2. [Análisis biomecánico motor
-        9](#anuxe1lisis-biomecuxe1nico-motor)
-
-    3. [Justificación para introducir el TUG
-        10](#prueba-de-time-up-and-go-tug)
-
-    4. [Timed Up and Go instrumentado
-        10](#timed-up-and-go-instrumentado)
-
-    5. [Medidores inerciales y RGB-D 11](#medidores-inerciales-y-rgb-d)
-
-5. [Estado del arte 12](#estado-del-arte)
-
-    1. [Del TUG convencional al TUG instrumentado
-        12](#del-tug-convencional-al-tug-instrumentado)
-
-    2. [IMU: segmentación y características
-        12](#imu-segmentaciuxf3n-y-caracteruxedsticas)
-
-    3. [RGB-D y análisis no invasivo
-        13](#rgb-d-y-anuxe1lisis-no-invasivo)
-
-    4. [Severidad y biomarcadores 13](#severidad-y-biomarcadores)
-
-[Referencias 13](#referencias)
-
-> []{#_bookmark2 label="_bookmark2"}**TUG** Prueba de levantarse,
-> caminar y sentarse (***T**imed **U**p and **G**o)*
->
-> **ITUG** Prueba de levantarse, caminar y sentarse instrumentada
-> (Instrumented ***T**ime d **U**p and **G**o)*
->
-> **IMU** Unidad de medición inercial (***I**nertial **M**easurement
-> **U**nit*)
->
-> **AUC** Área Bajo la Curva (*Area Under the Curve*)
+## Lista de Acrónimos
+**TUG** Prueba de levantarse,
+caminar y sentarse (***T**imed **U**p and **G**o)*
+**ITUG** Prueba de levantarse, caminar y sentarse instrumentada
+(Instrumented ***T**ime d **U**p and **G**o)*
+**IMU** Unidad de medición inercial (***I**nertial **M**easurement
+**U**nit*)
+**AUC** Área Bajo la Curva (*Area Under the Curve*)
 
 **EP** Enfermedad de Parkinson
 
-> **FFT** Transformada Rápida de Fourier (*Fast Fourier Transform*)
+**FFT** Transformada Rápida de Fourier (*Fast Fourier Transform*)
 
 **I2T** Grupo de Investigación en Informática y Telecomunicaciones
 
 **L5** Quinta vértebra lumbar (ubicación anatómica del sensor inercial)
 
-> **MDS** Sociedad de Trastornos del Movimiento (*Movement Disorder
-> Society*)
->
-> **MDS-UPDRS** Escala Unificada de Evaluación de la Enfermedad de
-> Parkinson de la MDS (*MDS - Unified Parkinson\'s Disease Rating
-> Scale*)
->
-> **RGB-D** Cámara de Color y Profundidad (*Red, Green, Blue - Depth*)
+**MDS** Sociedad de Trastornos del Movimiento (*Movement Disorder
+Society*)
+**MDS-UPDRS** Escala Unificada de Evaluación de la Enfermedad de
+Parkinson de la MDS (*MDS - Unified Parkinson\'s Disease Rating
+Scale*)
+**RGB-D** Cámara de Color y Profundidad (*Red, Green, Blue - Depth*)
 
-# Glosario de Términos {#glosario-de-tuxe9rminos}
+# Glosario de Términos 
 
 **Fases de la prueba TUG**: Etapas que componen la ejecución de la
 prueba: levantamiento, caminata, giro, regreso y sentada.
@@ -115,9 +61,9 @@ síntoma motor principal de la enfermedad de Parkinson.
 **Cadencia:** Número de pasos realizados por unidad de tiempo
 (usualmente pasos por minuto) durante la marcha.
 
-> **Congelamiento de la marcha (*Freezing of Gait*):** Incapacidad breve
-> e involuntaria para iniciar o mantener la marcha, en la que los pies
-> parecen quedar temporalmente \"pegados al suelo\".
+**Congelamiento de la marcha (*Freezing of Gait*):** Incapacidad breve
+e involuntaria para iniciar o mantener la marcha, en la que los pies
+parecen quedar temporalmente \"pegados al suelo\".
 
 **Doble apoyo:** Intervalo dentro del ciclo de marcha en el que ambos
 pies permanecen simultáneamente en contacto con la superficie.
@@ -183,7 +129,7 @@ dentro de un movimiento.
 tiempo, registrada principalmente por los giroscopios de los sensores
 inerciales.
 
-## Introducción {#introducciuxf3n}
+## Introducción 
 
 La enfermedad de Parkinson (EP) es un trastorno neurodegenerativo
 progresivo cuya expresión clínica incluye bradicinesia, rigidez, temblor
@@ -266,7 +212,7 @@ señales inerciales (a extraídas de las fases de la prueba *Timed Up and
 Go* (TUG), con el fin de identificar patrones de movimiento que apoyen
 el diagnóstico objetivo y clínico de la enfermedad de Parkinson.
 
-## Objetivos específicos {#objetivos-especuxedficos}
+## Objetivos específicos 
 
 - Identificar el data set. Realizar el análisis de datos existentes,
   conformado por las señales inerciales y cámaras IMU de aproximadamente
@@ -302,7 +248,7 @@ del ecosistema tecnológico de los sistemas T-motion y VIMOV, el cual
 permitirá, como mínimo, clasificar de manera automática a pacientes y
 controles según los datos inerciales de cada fase de la prueba.
 
-## Límites del proyecto {#luxedmites-del-proyecto}
+## Límites del proyecto 
 
 El producto de este proyecto funcionará exclusivamente como un
 componente de apoyo tecnológico para la cuantificación objetiva de la
@@ -341,7 +287,7 @@ esfuerzo en la validación y la generación de evidencia sobre el
 desempeño del sistema, en lugar de reiniciar la infraestructura de
 adquisición y segmentación.
 
-## Marco teórico {#marco-teuxf3rico}
+## Marco teórico 
 
 ## Enfermedad de Parkinson (EP)
 
@@ -377,7 +323,7 @@ biomecánico. La medición instrumentada puede complementar estas
 evaluaciones al generar indicadores cuantitativos, reproducibles y
 potencialmente sensibles a cambios en movilidad.
 
-## Análisis biomecánico motor {#anuxe1lisis-biomecuxe1nico-motor}
+## Análisis biomecánico motor 
 
 El análisis biomecánico motor estudia el movimiento humano a partir de
 variables temporales, espaciales, cinemáticas y cinéticas. En análisis
@@ -565,7 +511,7 @@ metodológico: ayuda a definir qué fases, sensores, variables y métodos
 de detección son recurrentes, y advierte que la diversidad de
 configuraciones dificulta comparaciones directas entre estudios.
 
-## IMU: segmentación y características {#imu-segmentaciuxf3n-y-caracteruxedsticas}
+## IMU: segmentación y características 
 
 Vervoort et al. (2016) analizaron datos inerciales durante TUG mediante
 un enfoque multivariado. El estudio reportó que características de
@@ -587,7 +533,7 @@ de un clasificador depende de decisiones de adquisición y
 preprocesamiento; por ello, TUG 2 debe documentar ubicación de sensores,
 frecuencia de muestreo, selección de variables y partición de datos.
 
-## RGB-D y análisis no invasivo {#rgb-d-y-anuxe1lisis-no-invasivo}
+## RGB-D y análisis no invasivo 
 
 Dubois et al. (2018) demostraron la automatización del TUG mediante
 cámara de profundidad. Su aporte es validar la posibilidad de medir de
@@ -625,93 +571,76 @@ vayan más allá de paciente frente a control.
 
 # Referencias
 
-> Caramia, C., Torricelli, D., Schmid, M., Muñoz-González, A.,
-> González-Vargas, J., Grandas, F., & Pons, J. L. (2018). IMU-based
-> classification of Parkinson's disease from gait: A sensitivity
-> analysis on sensor location and feature selection. IEEE Journal of
-> Biomedical and Health Informatics, 22(6), 1765--1774.
-> [[https://doi.org/10.1109/JBHI.2018.2865218]{.underline}](https://doi.org/10.1109/JBHI.2018.2865218)
->
-> Choi, Y., Bae, Y., Cha, B., & Ryu, J. (2022). Deep learning-based
-> subtask segmentation of Timed Up-and-Go test using RGB-D cameras.
-> Sensors, 22(17), Article 6323.
-> [[https://doi.org/10.3390/s22176323]{.underline}](https://doi.org/10.3390/s22176323)
->
-> Dubois, A., Bihl, T., & Bresciani, J.-P. (2018). Automating the Timed
-> Up and Go test using a depth camera. Sensors, 18(1), Article 14.
-> [[https://doi.org/10.3390/s18010014]{.underline}](https://doi.org/10.3390/s18010014)
->
-> Molero-Mateo, P., Trigo, C., Torres-Pardo, A., Fernández-Vázquez, D.,
-> Torricelli, D., Akgün, İ., Gómez-García, J. A., Algaba-Vidoy, M.,
-> Carratalá-Tejada, M., García-Diego-Martínez, S., Navarro-López, V.,
-> González-Zamorano, Y., Alguacil-Diego, I. M., & Molina-Rueda, F.
-> (2026). Instrumented Timed Up and Go analysis identifies biomechanical
-> markers across early Hoehn and Yahr stages of Parkinson's disease.
-> Sensors, 26(16), Article 5177.
-> [[https://doi.org/10.3390/s26165177]{.underline}](https://doi.org/10.3390/s26165177)
->
-> Mollinedo, I., & Cancela, J. M. (2020). Evaluation of the psychometric
-> properties and clinical applications of the Timed Up and Go test in
-> Parkinson disease: A systematic review. Journal of Exercise
-> Rehabilitation, 16(4), 302--312.
-> [[https://doi.org/10.12965/jer.2040532.266]{.underline}](https://doi.org/10.12965/jer.2040532.266)
->
-> Ortega-Bastidas, P., Gómez, B., Aqueveque, P., & Leiva, S. (2023).
-> Instrumented Timed Up and Go test (iTUG)---More than assessing time to
-> predict falls: A systematic review. Sensors, 23(7), Article 3426.
-> [[https://doi.org/10.3390/s23073426]{.underline}](https://doi.org/10.3390/s23073426)
->
-> Patiño Zambrano, J., Mueses Zúñiga, D., & Montezuma Sevillano, J. (s.
-> f.). Timed Up and Go con unidades inerciales \[Proyecto de grado\].
-> Universidad Icesi. Documento interno del macroproyecto.
->
-> Postuma, R. B., Berg, D., Stern, M., Poewe, W., Olanow, C. W., Oertel,
-> W., Obeso, J., Marek, K.,
->
-> Litvan, I., Lang, A. E., Halliday, G., Goetz, C. G., Gasser, T.,
-> Dubois, B., Chan, P., Bloem, B. R., Adler, C. H., & Deuschl, G.
-> (2015). MDS clinical diagnostic criteria for Parkinson's disease.
->
-> Movement Disorders, 30(12), 1591--1601.
-> [[https://doi.org/10.1002/mds.26424]{.underline}](https://doi.org/10.1002/mds.26424)
->
-> Russo, M., Amboni, M., Pisani, N., Volzone, A., et al. (2025).
-> Biomechanics parameters of gait analysis to characterize Parkinson's
-> disease: A scoping review. Sensors, 25(2), Article 338.
-> [[https://doi.org/10.3390/s25020338]{.underline}](https://doi.org/10.3390/s25020338)
->
-> Tan, D., Pua, Y.-H., Balakrishnan, S., Scully, A., Bower, K. J.,
-> Prakash, K. M., Tan, E.-K., Chew, J.-S., Poh, E., Tan, S.-B., & Clark,
-> R. A. (2019). Automated analysis of gait and modified Timed Up and Go
-> using the Microsoft Kinect in people with Parkinson's disease:
-> Associations with physical outcome measures. Medical & Biological
-> Engineering & Computing, 57(2), 369--377.
-> [[https://doi.org/10.1007/s11517-018-1868-2]{.underline}](https://doi.org/10.1007/s11517-018-1868-2)
->
-> van Kersbergen, J., Otte, K., de Vries, N. M., Bloem, B. R., Röhling,
-> H. M., Mansow-Model, S., van der Kolk, N. M., Overeem, S., Zinger, S.,
-> & van Gilst, M. M. (2021). Camera-based objective measures of
-> Parkinson's disease gait features. BMC Research Notes, 14, Article
-> 329.
-> [[https://doi.org/10.1186/s13104-021-05744-z]{.underline}](https://doi.org/10.1186/s13104-021-05744-z)
->
-> Vervoort, D., Vuillerme, N., Kosse, N., Hortobágyi, T., & Lamoth, C.
-> J. C. (2016). Multivariate analyses and classification of inertial
-> sensor data to identify aging effects on the Timed-Up-and-Go test.
->
-> PLOS ONE, 11(6), Article e0155984.
-> [[https://doi.org/10.1371/journal.pone.0155984]{.underline}](https://doi.org/10.1371/journal.pone.0155984)
->
-> Welzel, J., Wendtland, D., Warmerdam, E., Romijnders, R., Elshehabi,
-> M., Geritz, J., Berg, D., Hansen, C., & Maetzler, W. (2021). Step
-> length is a promising progression marker in Parkinson's disease.
->
-> Sensors, 21(7), Article 2292.
-> [[https://doi.org/10.3390/s21072292]{.underline}](https://doi.org/10.3390/s21072292)
->
-> Zampieri, C., Salarian, A., Carlson-Kuhta, P., Aminian, K., Nutt, J.
-> G., & Horak, F. B. (2010). The instrumented Timed Up and Go test:
-> Potential outcome measure for disease modifying therapies in
-> Parkinson's disease. Journal of Neurology, Neurosurgery & Psychiatry,
-> 81(2), 171--176.
-> [[https://doi.org/10.1136/jnnp.2009.173740]{.underline}](https://doi.org/10.1136/jnnp.2009.173740)
+Caramia, C., Torricelli, D., Schmid, M., Muñoz-González, A.,
+González-Vargas, J., Grandas, F., & Pons, J. L. (2018). IMU-based
+classification of Parkinson's disease from gait: A sensitivity
+analysis on sensor location and feature selection. IEEE Journal of
+Biomedical and Health Informatics, 22(6), 1765--1774.
+[[https://doi.org/10.1109/JBHI.2018.2865218]{.underline}](https://doi.org/10.1109/JBHI.2018.2865218)
+Choi, Y., Bae, Y., Cha, B., & Ryu, J. (2022). Deep learning-based
+subtask segmentation of Timed Up-and-Go test using RGB-D cameras.
+Sensors, 22(17), Article 6323.
+[[https://doi.org/10.3390/s22176323]{.underline}](https://doi.org/10.3390/s22176323)
+Dubois, A., Bihl, T., & Bresciani, J.-P. (2018). Automating the Timed
+Up and Go test using a depth camera. Sensors, 18(1), Article 14.
+[[https://doi.org/10.3390/s18010014]{.underline}](https://doi.org/10.3390/s18010014)
+Molero-Mateo, P., Trigo, C., Torres-Pardo, A., Fernández-Vázquez, D.,
+Torricelli, D., Akgün, İ., Gómez-García, J. A., Algaba-Vidoy, M.,
+Carratalá-Tejada, M., García-Diego-Martínez, S., Navarro-López, V.,
+González-Zamorano, Y., Alguacil-Diego, I. M., & Molina-Rueda, F.
+(2026). Instrumented Timed Up and Go analysis identifies biomechanical
+markers across early Hoehn and Yahr stages of Parkinson's disease.
+Sensors, 26(16), Article 5177.
+[[https://doi.org/10.3390/s26165177]{.underline}](https://doi.org/10.3390/s26165177)
+Mollinedo, I., & Cancela, J. M. (2020). Evaluation of the psychometric
+properties and clinical applications of the Timed Up and Go test in
+Parkinson disease: A systematic review. Journal of Exercise
+Rehabilitation, 16(4), 302--312.
+[[https://doi.org/10.12965/jer.2040532.266]{.underline}](https://doi.org/10.12965/jer.2040532.266)
+Ortega-Bastidas, P., Gómez, B., Aqueveque, P., & Leiva, S. (2023).
+Instrumented Timed Up and Go test (iTUG)---More than assessing time to
+predict falls: A systematic review. Sensors, 23(7), Article 3426.
+[[https://doi.org/10.3390/s23073426]{.underline}](https://doi.org/10.3390/s23073426)
+Patiño Zambrano, J., Mueses Zúñiga, D., & Montezuma Sevillano, J. (s.
+f.). Timed Up and Go con unidades inerciales \[Proyecto de grado\].
+Universidad Icesi. Documento interno del macroproyecto.
+Postuma, R. B., Berg, D., Stern, M., Poewe, W., Olanow, C. W., Oertel,
+W., Obeso, J., Marek, K.,
+Litvan, I., Lang, A. E., Halliday, G., Goetz, C. G., Gasser, T.,
+Dubois, B., Chan, P., Bloem, B. R., Adler, C. H., & Deuschl, G.
+(2015). MDS clinical diagnostic criteria for Parkinson's disease.
+Movement Disorders, 30(12), 1591--1601.
+[[https://doi.org/10.1002/mds.26424]{.underline}](https://doi.org/10.1002/mds.26424)
+Russo, M., Amboni, M., Pisani, N., Volzone, A., et al. (2025).
+Biomechanics parameters of gait analysis to characterize Parkinson's
+disease: A scoping review. Sensors, 25(2), Article 338.
+[[https://doi.org/10.3390/s25020338]{.underline}](https://doi.org/10.3390/s25020338)
+Tan, D., Pua, Y.-H., Balakrishnan, S., Scully, A., Bower, K. J.,
+Prakash, K. M., Tan, E.-K., Chew, J.-S., Poh, E., Tan, S.-B., & Clark,
+R. A. (2019). Automated analysis of gait and modified Timed Up and Go
+using the Microsoft Kinect in people with Parkinson's disease:
+Associations with physical outcome measures. Medical & Biological
+Engineering & Computing, 57(2), 369--377.
+[[https://doi.org/10.1007/s11517-018-1868-2]{.underline}](https://doi.org/10.1007/s11517-018-1868-2)
+van Kersbergen, J., Otte, K., de Vries, N. M., Bloem, B. R., Röhling,
+H. M., Mansow-Model, S., van der Kolk, N. M., Overeem, S., Zinger, S.,
+& van Gilst, M. M. (2021). Camera-based objective measures of
+Parkinson's disease gait features. BMC Research Notes, 14, Article
+329.
+[[https://doi.org/10.1186/s13104-021-05744-z]{.underline}](https://doi.org/10.1186/s13104-021-05744-z)
+Vervoort, D., Vuillerme, N., Kosse, N., Hortobágyi, T., & Lamoth, C.
+J. C. (2016). Multivariate analyses and classification of inertial
+sensor data to identify aging effects on the Timed-Up-and-Go test.
+PLOS ONE, 11(6), Article e0155984.
+[[https://doi.org/10.1371/journal.pone.0155984]{.underline}](https://doi.org/10.1371/journal.pone.0155984)
+Welzel, J., Wendtland, D., Warmerdam, E., Romijnders, R., Elshehabi,
+M., Geritz, J., Berg, D., Hansen, C., & Maetzler, W. (2021). Step
+length is a promising progression marker in Parkinson's disease.
+Sensors, 21(7), Article 2292.
+[[https://doi.org/10.3390/s21072292]{.underline}](https://doi.org/10.3390/s21072292)
+Zampieri, C., Salarian, A., Carlson-Kuhta, P., Aminian, K., Nutt, J.
+G., & Horak, F. B. (2010). The instrumented Timed Up and Go test:
+Potential outcome measure for disease modifying therapies in
+Parkinson's disease. Journal of Neurology, Neurosurgery & Psychiatry,
+81(2), 171--176.
+[[https://doi.org/10.1136/jnnp.2009.173740]{.underline}](https://doi.org/10.1136/jnnp.2009.173740)
