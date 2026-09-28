@@ -4,11 +4,11 @@ para anlisis de variables espacio temporales en pacientes de parkinson
 
 > []{#_bookmark1 label="_bookmark1"} **Proyecto de Grado I**
 >
-> Juan José Arias Gallego
+> **Juan José Arias Gallego**
 >
-> Esteban Guarin Valencia
+> **Esteban Guarin Valencia**
 >
-> Santiago Gómez Robledo
+> **Santiago Gómez Robledo**
 >
 > **Heiner Danit Rincón Carrillo**
 >
@@ -24,47 +24,47 @@ para anlisis de variables espacio temporales en pacientes de parkinson
 
 [Glosario de Términos 3](#glosario-de-tuxe9rminos)
 
-1.  [Introducción 5](#introducciuxf3n)
+1. [Introducción 5](#introducciuxf3n)
 
-    1.  [Planteamiento del problema 6](#planteamiento-del-problema)
+    1. [Planteamiento del problema 6](#planteamiento-del-problema)
 
-2.  [Objetivos 7](#objetivos)
+2. [Objetivos 7](#objetivos)
 
-    1.  [Objetivo general 7](#objetivo-general)
+    1. [Objetivo general 7](#objetivo-general)
 
     <!-- -->
 
-    1.  [Alcance 8](#alcance)
+    1. [Alcance 8](#alcance)
 
-3.  [Antecedentes del proyecto 8](#antecedentes-del-proyecto)
+3. [Antecedentes del proyecto 8](#antecedentes-del-proyecto)
 
-4.  [Marco teórico 8](#marco-teuxf3rico)
+4. [Marco teórico 8](#marco-teuxf3rico)
 
-    1.  [Enfermedad de Parkinson (EP) 8](#enfermedad-de-parkinson-ep)
+    1. [Enfermedad de Parkinson (EP) 8](#enfermedad-de-parkinson-ep)
 
-    2.  [Análisis biomecánico motor
+    2. [Análisis biomecánico motor
         9](#anuxe1lisis-biomecuxe1nico-motor)
 
-    3.  [Justificación para introducir el TUG
+    3. [Justificación para introducir el TUG
         10](#prueba-de-time-up-and-go-tug)
 
-    4.  [Timed Up and Go instrumentado
+    4. [Timed Up and Go instrumentado
         10](#timed-up-and-go-instrumentado)
 
-    5.  [Medidores inerciales y RGB-D 11](#medidores-inerciales-y-rgb-d)
+    5. [Medidores inerciales y RGB-D 11](#medidores-inerciales-y-rgb-d)
 
-5.  [Estado del arte 12](#estado-del-arte)
+5. [Estado del arte 12](#estado-del-arte)
 
-    1.  [Del TUG convencional al TUG instrumentado
+    1. [Del TUG convencional al TUG instrumentado
         12](#del-tug-convencional-al-tug-instrumentado)
 
-    2.  [IMU: segmentación y características
+    2. [IMU: segmentación y características
         12](#imu-segmentaciuxf3n-y-caracteruxedsticas)
 
-    3.  [RGB-D y análisis no invasivo
+    3. [RGB-D y análisis no invasivo
         13](#rgb-d-y-anuxe1lisis-no-invasivo)
 
-    4.  [Severidad y biomarcadores 13](#severidad-y-biomarcadores)
+    4. [Severidad y biomarcadores 13](#severidad-y-biomarcadores)
 
 [Referencias 13](#referencias)
 
@@ -364,7 +364,7 @@ balanceo de brazos y dificultades en transiciones y giros (Russo et al.,
 La marcha parkinsoniana es heterogénea. En estadios tempranos, algunas
 alteraciones pueden ser discretas y confundirse con cambios asociados a
 envejecimiento o con otras condiciones. En fases más avanzadas pueden
-aparecer festinación, inestabilidad postural y congelamiento de la
+aparecer festinación, inestabilidad postural ley congelamiento de la
 marcha, especialmente durante inicio de marcha, giros, pasos estrechos o
 tareas que incrementan la demanda atencional. Por ello, medir múltiples
 dimensiones del desempeño motor resulta más informativo que utilizar una
@@ -517,7 +517,9 @@ una IMU; cada sensor observa dimensiones diferentes del movimiento y
 debe validarse según su propósito.
 
 Estudios con Kinect han demostrado la viabilidad de automatizar el TUG y
-caracterizar variables de marcha en población con EP. Van Kersbergen et al. (2021) reportaron diferencias entre
+caracterizar variables de marcha en población con EP. Tan et al. (2019)
+analizaron marcha y TUG modificado con Kinect en personas con EP,
+mientras que van Kersbergen et al. (2021) reportaron diferencias entre
 pacientes y controles en variables como longitud de paso y velocidad de
 marcha. Choi et al. (2022) mostró que las subtareas del TUG pueden
 segmentarse mediante aprendizaje profundo a partir de cámaras RGB-D.
@@ -589,7 +591,10 @@ frecuencia de muestreo, selección de variables y partición de datos.
 
 Dubois et al. (2018) demostraron la automatización del TUG mediante
 cámara de profundidad. Su aporte es validar la posibilidad de medir de
-manera objetiva la prueba sin sensores adheridos.
+manera objetiva la prueba sin sensores adheridos. Tan et al. (2019)
+extendieron esta línea a personas con EP y relacionaron medidas
+derivadas de Kinect con desenlaces físicos clínicos, reforzando el valor
+de las medidas ópticas para caracterización funcional.
 
 Van Kersbergen et al. (2021) evaluaron medidas objetivas de marcha
 basadas en cámara en personas con EP y controles. El estudio aporta
@@ -601,7 +606,7 @@ futuros enfoques automáticos de segmentación visual.
 
 ## Severidad y biomarcadores
 
-## 
+##
 
 Welzel et al. (2021) reportaron que la longitud de paso es un posible
 marcador de progresión en EP. Su aporte para el proyecto es clínico:
@@ -675,6 +680,14 @@ vayan más allá de paciente frente a control.
 > disease: A scoping review. Sensors, 25(2), Article 338.
 > [[https://doi.org/10.3390/s25020338]{.underline}](https://doi.org/10.3390/s25020338)
 >
+> Tan, D., Pua, Y.-H., Balakrishnan, S., Scully, A., Bower, K. J.,
+> Prakash, K. M., Tan, E.-K., Chew, J.-S., Poh, E., Tan, S.-B., & Clark,
+> R. A. (2019). Automated analysis of gait and modified Timed Up and Go
+> using the Microsoft Kinect in people with Parkinson's disease:
+> Associations with physical outcome measures. Medical & Biological
+> Engineering & Computing, 57(2), 369--377.
+> [[https://doi.org/10.1007/s11517-018-1868-2]{.underline}](https://doi.org/10.1007/s11517-018-1868-2)
+>
 > van Kersbergen, J., Otte, K., de Vries, N. M., Bloem, B. R., Röhling,
 > H. M., Mansow-Model, S., van der Kolk, N. M., Overeem, S., Zinger, S.,
 > & van Gilst, M. M. (2021). Camera-based objective measures of
@@ -702,21 +715,3 @@ vayan más allá de paciente frente a control.
 > Parkinson's disease. Journal of Neurology, Neurosurgery & Psychiatry,
 > 81(2), 171--176.
 > [[https://doi.org/10.1136/jnnp.2009.173740]{.underline}](https://doi.org/10.1136/jnnp.2009.173740)
->
-> AI-Driven Adaptive Segmentation of Timed Up and Go Test Phases Using a Smartphone.
->
-> Application of Wearable Sensors in Parkinson's Disease State of the Art.
->
-> Better than counting seconds Identifying fallers among healthy elderly using fusion of accelerometer features and dual-task Timed Up and Go.
->
-> Comparison of Walking Protocols and Gait Assessment Systems for Machine Learning-Based Classification of Parkinson's Disease.
->
-> Experimental Validation of Depth Cameras for the Parameterization of Functional Balance of Patients in Clinical Tests.
->
-> Gait Patterns and Balance Impairment in Parkinson's Disease With Correlation to Disease Severity.
->
-> Instrumented Timed Up and Go (iTUG) A Systematic Review of Parameters Across Healthy, Older, and Neurological Populations.
->
-> Machine learning differentiation of Parkinson's disease and normal pressure hydrocephalus using wearable sensors capturing gait impairments.
->
-> Quantifying Parkinson's disease severity.
