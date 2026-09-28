@@ -429,49 +429,48 @@ Las siguientes son métricas secundarias o complementarias.
 ### Grupo A: Top 15 Variables de Oro
 | # | Nombre de la Variable | Fase TUG | Fuente Sensorial | Comportamiento EP | Viabilidad |
 |---|---|---|---|---|---|
-| 1 | Duración del Giro 180° (Turn Duration) | 3 | FUSIÓN | ↑↓ | VIABLE |
-| 2 | Velocidad Angular Pico de Guiñada (Turn Peak Yaw Velocity) | 3 | IMU | ↑↓ | VIABLE |
-| 3 | Número de Pasos durante el Giro (Turn Step Count) | 3 | FUSIÓN | ↑↓ | VIABLE |
-| 4 | Velocidad de Marcha (Gait Speed) | 2 y 4 (Marcha) | FUSIÓN | ↑↓ | VIABLE |
-| 5 | Longitud de Paso (Step Length) | 2 y 4 (Marcha) | RGB-D | ↑↓ | VIABLE |
-| 6 | Variabilidad del Tiempo de Paso (Step Time Variability) | 2 y 4 | IMU | ↑↓ | VIABLE |
-| 7 | Armónico de Marcha / Regularidad (Harmonic Ratio / Stride Regularity) | 2 y 4 | IMU | ↑↓ | VIABLE |
-| 8 | Duración de la Transición a Bípedo (Sit-to-Stand Duration) | 1 | FUSIÓN | ↑↓ | VIABLE |
-| 9 | Velocidad Angular Pico de Flexión (Peak Trunk Flexion Velocity) | 1 (Sit-to-Stand) | IMU | ↑↓ | VIABLE |
-| 10 | Impacto Vertical al Sentarse (Peak Vertical Deceleration) | 5 | IMU | ↑↓ | VIABLE |
-| 11 | Amplitud de Balanceo de Brazos (Arm Swing Amplitude) | 2 y 4 | RGB-D | ↑↓ | VIABLE |
-| 12 | Índice de Congelamiento de la Marcha (FoG Index) | 2, 3 y 4 | IMU | ↑↓ | VIABLE |
-| 13 | Ancho de Paso / Base de Sustentación (Step Width) | 2 y 4 | RGB-D | ↑↓ | VIABLE |
-| 14 | Duración Total del TUG (Total TUG Time) | Global | FUSIÓN | ↑↓ | VIABLE |
-| 15 | Rango de Movimiento del Tronco (Trunk Pitch ROM) | 1 y 5 | IMU | ↑↓ | VIABLE |
-
+| 1 | Duración del Giro 180° (Turn Duration) | Fase 3 | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 2 | Velocidad Angular Pico de Guiñada (Turn Peak Yaw Velocity) | Fase 3 | IMU | ↓ (Disminuye) | VIABLE |
+| 3 | Número de Pasos durante el Giro (Turn Step Count) | Fase 3 | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 4 | Velocidad de Marcha (Gait Speed) | Fase 2/4 | FUSIÓN | ↓ (Disminuye) | VIABLE |
+| 5 | Longitud de Paso (Step Length) | Fase 2/4 | RGB-D | ↓ (Disminuye) | VIABLE |
+| 6 | Variabilidad del Tiempo de Paso (Step Time Variability) | Fase 2/4 | IMU | ↑ (Aumenta) | VIABLE |
+| 7 | Armónico de Marcha / Regularidad (Harmonic Ratio) | Fase 2/4 | IMU | ↓ (Disminuye) | VIABLE |
+| 8 | Duración de la Transición a Bípedo (Sit-to-Stand Duration) | Fase 1 | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 9 | Velocidad Angular Pico de Flexión (Peak Trunk Flexion Velocity) | Fase 1 | IMU | ↓ (Disminuye) | VIABLE |
+| 10 | Impacto Vertical al Sentarse (Peak Vertical Deceleration) | Fase 5 | IMU | ↑ (Aumenta) | VIABLE |
+| 11 | Amplitud de Balanceo de Brazos (Arm Swing Amplitude) | Fase 2/4 | RGB-D | ↓ (Disminuye) | VIABLE |
+| 12 | Índice de Congelamiento de la Marcha (FoG Index) | Fase 2/3/4 | IMU | ↑ (Aumenta) | VIABLE |
+| 13 | Ancho de Paso / Base de Sustentación (Step Width) | Fase 2/4 | RGB-D | ↑ (Aumenta) | VIABLE |
+| 14 | Duración Total del TUG (Total TUG Time) | Global | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 15 | Rango de Movimiento del Tronco (Trunk Pitch ROM) | Fase 1/5 | IMU | ↓ (Disminuye) | VIABLE |
 
 ### Grupo B: Variables Complementarias
 | # | Nombre de la Variable | Fase TUG | Fuente Sensorial | Comportamiento EP | Viabilidad |
 |---|---|---|---|---|---|
-| 16 | Aceleración Vertical Pico (STS Peak Vertical Acceleration) | 1 (Sit-to-Stand) | IMU | ↑↓ | VIABLE |
-| 17 | Longitud de Zancada (Stride Length) | 2 y 4 (Marcha) | RGB-D | ↑↓ | VIABLE |
-| 18 | Cadencia de Marcha (Cadence) | 2 y 4 (Marcha) | FUSIÓN | ↑↓ | VIABLE |
-| 19 | Tiempo de Paso (Step Time) | 2 y 4 | IMU | ↑↓ | VIABLE |
-| 20 | Tiempo de Fase de Apoyo (Stance Phase Duration) | 2 y 4 | IMU | ↑↓ | DESCARTADA |
-| 21 | Tiempo de Doble Apoyo (Double Support Time) | 2 y 4 | RGB-D | ↑↓ | VIABLE |
-| 22 | Simetría Espacial del Paso (Step Spatial Symmetry) | 2 y 4 | RGB-D | ↑↓ | VIABLE |
-| 23 | Desplazamiento Medio-Lateral del Tronco (Mediolateral Sway) | 2 y 4 | IMU | ↑↓ | VIABLE |
-| 24 | Velocidad Angular Media de Giro (Mean Turn Angular Velocity) | 3 | IMU | ↑↓ | VIABLE |
-| 25 | Turn Jerk (Suavidad del giro) | 3 | IMU | ↑↓ | VIABLE |
-| 26 | Duración de Transición a Sentado (Stand-to-Sit Duration) | 5 | FUSIÓN | ↑↓ | VIABLE |
-| 27 | Flexión Pico del Tronco al Sentarse (Peak Trunk Flexion Stand-to-Sit) | 5 | IMU | ↑↓ | VIABLE |
-| 28 | Duración del Giro Final (Pre-Sit Turn Duration) | 5 | IMU | ↑↓ | VIABLE |
-| 29 | Número Total de Pasos (Total Step Count) | Global | IMU | ↑↓ | VIABLE |
-| 30 | Aceleración Cuadrática Media (RMS Acceleration Global) | Global | IMU | ↑↓ | VIABLE |
-| 31 | Variabilidad de la Velocidad de Giro (Turn Velocity Variability) | 3 | IMU | ↑↓ | VIABLE |
-| 32 | Costo de Tarea Dual (Dual-Task Cost - DTC) | Global / 2 | FUSIÓN | ↑↓ | VIABLE |
-| 33 | Área de Balanceo del Centro de Masa (CoM Sway Area) | 1 y 5 (Transiciones) | RGB-D | ↑↓ | VIABLE |
-| 34 | Índice de Suavidad de la Transición (Transition SPARC) | 1 y 5 | IMU | ↑↓ | VIABLE |
-| 35 | Simetría Espacial de Giro (Turn Spatial Symmetry) | 3 | RGB-D | ↑↓ | VIABLE |
-| 36 | Aceleración Máxima de Impacto del Talón (Heel Strike Peak Accel) | 2 y 4 | IMU | ↑↓ | VIABLE |
-| 37 | Variabilidad del Tiempo de Balanceo (Swing Time Variability) | 2 y 4 | RGB-D | ↑↓ | VIABLE |
-| 38 | Duración Pospuesta del Paso (Delayed Step Initiation) | Transición 1 a 2 | FUSIÓN | ↑↓ | VIABLE |
+| 16 | Aceleración Vertical Pico (STS Peak Vertical Acceleration) | Fase 1 | IMU | ↓ (Disminuye) | VIABLE |
+| 17 | Longitud de Zancada (Stride Length) | Fase 2/4 | RGB-D | ↓ (Disminuye) | VIABLE |
+| 18 | Cadencia de Marcha (Cadence) | Fase 2/4 | FUSIÓN | Mixto / Disperso | VIABLE |
+| 19 | Tiempo de Paso (Step Time) | Fase 2/4 | IMU | ↑ (Aumenta) | VIABLE |
+| 20 | Tiempo de Fase de Apoyo (Stance Phase Duration) | Fase 2/4 | IMU | ↑ (Aumenta) | DESCARTADA (IMU) |
+| 21 | Tiempo de Doble Apoyo (Double Support Time) | Fase 2/4 | RGB-D | ↑ (Aumenta) | VIABLE |
+| 22 | Simetría Espacial del Paso (Step Spatial Symmetry) | Fase 2/4 | RGB-D | ↓ (Menos simetría)| VIABLE |
+| 23 | Desplazamiento Medio-Lateral del Tronco (Mediolateral Sway) | Fase 2/4 | IMU | ↑ (Aumenta) | VIABLE |
+| 24 | Velocidad Angular Media de Giro (Mean Turn Angular Velocity) | Fase 3 | IMU | ↓ (Disminuye) | VIABLE |
+| 25 | Turn Jerk (Suavidad del giro) | Fase 3 | IMU | ↑ (Aumenta) | VIABLE |
+| 26 | Duración de Transición a Sentado (Stand-to-Sit Duration) | Fase 5 | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 27 | Flexión Pico del Tronco al Sentarse (Peak Trunk Flexion) | Fase 5 | IMU | ↓ (Disminuye) | VIABLE |
+| 28 | Duración del Giro Final (Pre-Sit Turn Duration) | Fase 5 | IMU | ↑ (Aumenta) | VIABLE |
+| 29 | Número Total de Pasos (Total Step Count) | Global | IMU | ↑ (Aumenta) | VIABLE |
+| 30 | Aceleración Cuadrática Media (RMS Acceleration Global) | Global | IMU | ↓ (Disminuye) | VIABLE |
+| 31 | Variabilidad de la Velocidad de Giro (Turn Velocity Variability) | Fase 3 | IMU | ↑ (Aumenta) | VIABLE |
+| 32 | Costo de Tarea Dual (Dual-Task Cost - DTC) | Global | FUSIÓN | ↑ (Aumenta) | VIABLE |
+| 33 | Área de Balanceo del Centro de Masa (CoM Sway Area) | Fase 1/5 | RGB-D | ↑ (Aumenta) | VIABLE |
+| 34 | Índice de Suavidad de la Transición (Transition SPARC) | Fase 1/5 | IMU | ↓ (Disminuye) | VIABLE |
+| 35 | Simetría Espacial de Giro (Turn Spatial Symmetry) | Fase 3 | RGB-D | ↓ (Menos simetría)| VIABLE |
+| 36 | Aceleración Máxima de Impacto del Talón (Heel Strike Peak Accel)| Fase 2/4 | IMU | ↓ (Disminuye) | VIABLE |
+| 37 | Variabilidad del Tiempo de Balanceo (Swing Time Variability) | Fase 2/4 | RGB-D | ↑ (Aumenta) | VIABLE |
+| 38 | Duración Pospuesta del Paso (Delayed Step Initiation) | Transición | FUSIÓN | ↑ (Aumenta) | VIABLE |
 
 
 ---
