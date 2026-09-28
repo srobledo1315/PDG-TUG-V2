@@ -172,30 +172,17 @@ En consecuencia, el problema central de ingeniería radica en la ausencia de un 
 
 ## Objetivo general
 
-Desarrollar un algoritmo de clasificación basado en el análisis de
-señales inerciales (a extraídas de las fases de la prueba *Timed Up and
-Go* (TUG), con el fin de identificar patrones de movimiento que apoyen
-el diagnóstico objetivo y clínico de la enfermedad de Parkinson.
+Desarrollar un algoritmo de clasificación basado en el análisis conjunto de señales inerciales (IMU) y datos de cámaras de profundidad (RGB-D) extraídos de las fases de la prueba *Timed Up and Go* (TUG), con el fin de identificar patrones motores que apoyen el diagnóstico objetivo de la enfermedad de Parkinson.
 
 ## Objetivos específicos
 
-- Identificar el data set. Realizar el análisis de datos existentes,
-  conformado por las señales inerciales y cámaras IMU de aproximadamente
-  70 pacientes y sujetos de control obtenidas durante la prueba TUG,
-  asegurando su calidad, completitud y estructura para el análisis
-  computacional.
+- Identificar y perfilar el dataset bimodal (IMU y RGB-D) existente de aproximadamente 70 participantes, cuantificando la distribución de clases (pacientes frente a controles), el balance de los datos y la disponibilidad de las señales por fase, entregando un reporte de viabilidad para el análisis computacional.
 
-- Explorar técnicas de la prueba de TUG en la literatura para la
-  clasificación de pacientes y controles (levantamiento, marcha, giros y
-  sentado) comparando los resultados frente a referencias clínicas u
-  observacionales.
+- Explorar y documentar las técnicas reportadas en la literatura científica sobre la prueba TUG instrumentada, para identificar el conjunto de variables biomecánicas (cinemáticas y espaciotemporales) con mayor capacidad discriminatoria.
 
-- Extraer las variables biomecánicas más relevantes de cada fase
-  segmentada mediante técnicas de selección de características.
+- Analizar los datos tomados en campo para extraer las variables biomecánicas previamente identificadas en la revisión de literatura, aplicando técnicas algorítmicas sobre cada subfase segmentada de la prueba.
 
-- Implementar un algoritmo de clasificación que permita diferenciar los
-  patrones de movilidad entre pacientes con Parkinson y sujetos de
-  control a partir de las métricas obtenidas.
+- Implementar un algoritmo de clasificación que permita diferenciar los patrones motores entre pacientes con enfermedad de Parkinson y sujetos de control a partir de las métricas extraídas.
 
 ## Alcance
 
@@ -329,7 +316,7 @@ postural. Esta diferenciación es especialmente pertinente en EP, donde
 los giros y las transiciones pueden deteriorarse de manera
 desproporcionada frente al tiempo global.
 
-## Prueba de Time Up and Go (TUG)
+## Prueba Timed Up and Go (TUG)
 
 El TUG es una prueba de movilidad funcional en la que el resultado
 tradicional es el tiempo requerido para completar una secuencia de
@@ -356,9 +343,7 @@ facilita la extracción de variables específicas por fase y ofrece una
 base para analizar patrones de movilidad mediante métodos estadísticos y
 de aprendizaje automático.
 
-## Timed Up and Go instrumentado
-
-El TUG instrumentado, o iTUG, incorpora sensores y algoritmos para
+En este contexto, la instrumentación de la prueba (iTUG) incorpora sensores y algoritmos para
 identificar automáticamente los eventos que componen la prueba. Una
 segmentación útil comprende: levantarse de la silla, marcha de ida, giro
 de 180°, marcha de regreso, giro o aproximación final y sentarse. El
@@ -391,7 +376,7 @@ identificó que los sensores inerciales predominan en las aplicaciones de
 iTUG y que la segmentación automática constituye un paso central para
 estimar variables relevantes para movilidad y riesgo de caídas.
 
-## Medidores inerciales y RGB-D
+## Unidades de Medición Inercial (IMU)
 
 Las unidades de medición inercial integran, como mínimo, acelerómetros y
 giroscopios triaxiales. Los acelerómetros miden aceleración lineal,
@@ -409,6 +394,8 @@ posición y orientación del sensor, ruido, errores de fijación y deriva
 cuando se integran señales. Por esta razón, los algoritmos deben incluir
 procedimientos de preprocesamiento, control de calidad y segmentación
 robusta.
+
+## Cámaras de Profundidad RGB-D
 
 Las cámaras RGB-D combinan imagen de color con información de
 profundidad, lo que permite estimar la posición tridimensional
