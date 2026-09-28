@@ -18,7 +18,7 @@ Tutores: Domiciano Rincón y Andrés Navarro
 
 <div style="page-break-after: always;"></div>
 
-## Lista de Acrónimos
+# Lista de Acrónimos
 
 **TUG** Prueba de levantarse,
 caminar y sentarse (***T**imed **U**p and **G**o)*
@@ -130,7 +130,7 @@ dentro de un movimiento.
 tiempo, registrada principalmente por los giroscopios de los sensores
 inerciales.
 
-## Introducción
+# Introducción
 
 La enfermedad de Parkinson (EP) es un trastorno neurodegenerativo progresivo cuya expresión clínica incluye bradicinesia, rigidez, temblor en reposo y alteraciones del control postural. Estas manifestaciones afectan la movilidad funcional y pueden modificar la marcha, las transiciones posturales y la capacidad de girar de manera segura. Aunque la evaluación clínica continúa siendo indispensable, la cuantificación objetiva del movimiento puede complementar las escalas médicas al describir cambios sutiles y específicos de la ejecución motora (Postuma et al., 2015; Russo et al., 2025).
 
@@ -142,7 +142,7 @@ La adquisición de datos para este proyecto se llevó a cabo durante brigadas m�
 
 Este proyecto se fundamenta en dicha base de datos recolectada para segmentar las muestras, analizar la información conjunta procedente de las IMU y cámaras, e implementar algoritmos de clasificación de patrones motores que apoyen la caracterización objetiva de la enfermedad.
 
-## Planteamiento del problema
+# Planteamiento del problema
 
 En la práctica clínica, el tiempo total del TUG es una medida simple,
 útil y de rápida aplicación; no obstante, resume en un solo valor
@@ -168,13 +168,13 @@ complementen la evaluación clínica.
 
 En consecuencia, el problema central de ingeniería radica en la ausencia de un marco analítico y algorítmico que permita la extracción e identificación objetiva de patrones motores a partir de las subfases de la prueba TUG instrumentada. Esta carencia metodológica tiene como causa la complejidad de procesar datos crudos bimodales (IMU y RGB-D) frente a la insuficiencia clínica del tiempo global de la prueba convencional, lo cual genera como consecuencia una limitación para clasificar automáticamente a pacientes con enfermedad de Parkinson frente a sujetos de control, dificultando así el apoyo tecnológico para un diagnóstico objetivo.
 
-## Objetivos
+# Objetivos
 
 ## Objetivo general
 
 Desarrollar un algoritmo de clasificación basado en el análisis conjunto de señales inerciales (IMU) y datos de cámaras de profundidad (RGB-D) extraídos de las fases de la prueba *Timed Up and Go* (TUG), con el fin de identificar patrones motores que apoyen el diagnóstico objetivo de la enfermedad de Parkinson.
 
-## Objetivos específicos
+# Objetivos específicos
 
 - Identificar y perfilar el dataset bimodal (IMU y RGB-D) existente de aproximadamente 70 participantes, cuantificando la distribución de clases (pacientes frente a controles), el balance de los datos y la disponibilidad de las señales por fase, entregando un reporte de viabilidad para el análisis computacional.
 
@@ -184,7 +184,7 @@ Desarrollar un algoritmo de clasificación basado en el análisis conjunto de se
 
 - Implementar un algoritmo de clasificación que permita diferenciar los patrones motores entre pacientes con enfermedad de Parkinson y sujetos de control a partir de las métricas extraídas.
 
-## Alcance
+# Alcance
 
 El alcance de este proyecto comprende el desarrollo y evaluación de un
 algoritmo computacional capaz de clasificar patrones de movilidad entre
@@ -200,7 +200,7 @@ del ecosistema tecnológico de los sistemas T-motion y VIMOV, el cual
 permitirá, como mínimo, clasificar de manera automática a pacientes y
 controles según los datos inerciales de cada fase de la prueba.
 
-## Límites del proyecto
+# Límites del proyecto
 
 El producto de este proyecto funcionará exclusivamente como un
 componente de apoyo tecnológico para la cuantificación objetiva de la
@@ -211,7 +211,7 @@ el algoritmo de clasificación deben interpretarse como una herramienta
 de asistencia sujeta a la validación e interpretación del personal de
 salud.
 
-## Antecedentes del proyecto
+# Antecedentes del proyecto
 
 El grupo I2T mantiene colaboración con el servicio de neurología de la
 Fundación Valle del Lili desde 2010 y ha desarrollado herramientas para
@@ -239,7 +239,7 @@ esfuerzo en la validación y la generación de evidencia sobre el
 desempeño del sistema, en lugar de reiniciar la infraestructura de
 adquisición y segmentación.
 
-## Marco teórico
+# Marco teórico
 
 ## Enfermedad de Parkinson (EP)
 
@@ -434,7 +434,7 @@ En consecuencia, TUG 2 debe priorizar la extracción de características
 interpretables por fase, el contraste con etiquetas clínicas disponibles
 y la evaluación cuidadosa de generalización.
 
-## Estado del arte
+# Estado del arte
 
 El estado del arte se organiza por aporte metodológico y no como una
 enumeración de artículos. Se seleccionaron trabajos que sustentan una
@@ -503,8 +503,6 @@ subtareas del TUG con RGB-D, aportando una referencia directa para
 futuros enfoques automáticos de segmentación visual.
 
 ## Severidad y biomarcadores
-
-##
 
 Welzel et al. (2021) reportaron que la longitud de paso es un posible
 marcador de progresión en EP. Su aporte para el proyecto es clínico:
