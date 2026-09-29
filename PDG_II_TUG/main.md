@@ -172,17 +172,17 @@ En consecuencia, el problema central de ingeniería radica en la ausencia de un 
 
 ## Objetivo general
 
-Desarrollar un algoritmo de clasificación basado en el análisis conjunto de señales inerciales (IMU) y datos de cámaras de profundidad (RGB-D) extraídos de las fases de la prueba *Timed Up and Go* (TUG), con el fin de identificar patrones motores que apoyen el diagnóstico objetivo de la enfermedad de Parkinson.
+Desarrollar, validar e integrar en los sistemas T-motion y VIMOV un algoritmo de clasificación que diferencie pacientes con enfermedad de Parkinson de sujetos de control a partir de variables biomecánicas extraídas de cada fase de la prueba Timed Up and Go, registradas con IMU y cámara RGB-D en aproximadamente 70 participantes, con un desempeño superior al de un modelo base que utilice únicamente el tiempo total de la prueba.
 
-# Objetivos específicos
+## Objetivos específicos
 
-- Identificar y perfilar el dataset bimodal (IMU y RGB-D) existente de aproximadamente 70 participantes, cuantificando la distribución de clases (pacientes frente a controles), el balance de los datos y la disponibilidad de las señales por fase, entregando un reporte de viabilidad para el análisis computacional.
+- Caracterizar el dataset bimodal de aproximadamente 70 participantes recolectado en brigadas de la Fundación Valle del Lili, cuantificando la distribución y el balance de clases (pacientes con EP frente a controles), la disponibilidad de etiquetas clínicas (Hoehn y Yahr, MDS-UPDRS), y el porcentaje de registros con señales IMU y RGB-D completas, sincronizadas y con las cinco fases de la prueba identificables, consolidando los resultados en un reporte de viabilidad que defina el subconjunto de datos apto para el análisis.
 
-- Explorar y documentar las técnicas reportadas en la literatura científica sobre la prueba TUG instrumentada, para identificar el conjunto de variables biomecánicas (cinemáticas y espaciotemporales) con mayor capacidad discriminatoria.
+- Seleccionar, a partir de una revisión sistemática de al menos 25 artículos sobre la prueba TUG instrumentada con IMU y/o RGB-D en población con enfermedad de Parkinson, el conjunto de variables biomecánicas candidatas para cada fase de la prueba, consolidadas en una matriz que registre para cada variable la fase, la modalidad de captura, el método de extracción y la capacidad discriminatoria reportada.
 
-- Analizar los datos tomados en campo para extraer las variables biomecánicas previamente identificadas en la revisión de literatura, aplicando técnicas algorítmicas sobre cada subfase segmentada de la prueba.
+- Validar y ajustar el mecanismo de segmentación de fases del proyecto predecesor sobre el subconjunto de registros aptos definido en el primer objetivo específico, comparando los límites de fase detectados en las señales IMU contra una anotación manual de referencia obtenida del video RGB-D, y reportando el error temporal promedio por transición y el porcentaje de fases correctamente identificadas.
 
-- Implementar un algoritmo de clasificación que permita diferenciar los patrones motores entre pacientes con enfermedad de Parkinson y sujetos de control a partir de las métricas extraídas.
+- Extraer, para cada fase segmentada de los registros aptos, las variables biomecánicas priorizadas en la revisión sistemática a partir de las señales IMU y RGB-D, consolidándolas en una base de características estructurada por participante y fase, documentada y lista para el entrenamiento de modelos de clasificación.
 
 # Alcance
 

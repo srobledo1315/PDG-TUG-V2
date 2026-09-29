@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "2cd198a84e1b5042",
+        "id": "87f9da866168802b",
         "type": "tabs",
         "children": [
           {
-            "id": "861459c83555b0ba",
+            "id": "a8ca0e4220b3e6a4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -188,10 +188,10 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "861459c83555b0ba",
+  "active": "a8ca0e4220b3e6a4",
   "lastOpenFiles": [
-    "PDG_II_TUG/variables_espaciotemporales_TUG.md",
     "PDG_II_TUG/main.md",
+    "PDG_II_TUG/variables_espaciotemporales_TUG.md",
     "PDG_II_TUG/guia_estilo_proyecto.md"
   ]
 }
