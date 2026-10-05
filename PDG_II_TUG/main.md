@@ -519,6 +519,81 @@ y se interesa por la diferenciación de estadios tempranos. Su evidencia
 respalda explorar, solo si la base de datos lo permite, modelos que
 vayan más allá de paciente frente a control.
 
+## Variables espaciotemporales prioritarias y modelado cinemático mediante IMU
+
+La instrumentación del test TUG mediante sensores inerciales permite desacoplar la cinemática de cada subfase funcional, superando la insensibilidad diagnóstica inherente a la métrica de tiempo total. Como establecen Mollinedo y Cancela (2020) y Zampieri et al. (2010), un registro temporal escalar global enmascara las deficiencias específicas asociadas a la bradicinesia, la rigidez axial y la inestabilidad postural. Por consiguiente, la literatura contemporánea prioriza la descomposición del movimiento en cinco fases discretas (incorporación, marcha de ida, giro intermedio, marcha de retorno y descenso a la silla), cuantificando descriptores biomecánicos objetivos a partir de aceleraciones lineales tridimensionales ($\mathbf{a}(t) = [a_x, a_y, a_z]^T$) y velocidades angulares triaxiales ($\boldsymbol{\omega}(t) = [\omega_x, \omega_y, \omega_z]^T$). La identificación rigurosa de estas variables cinemáticas permite construir vectores de características altamente discriminantes para diferenciar entre pacientes con enfermedad de Parkinson y sujetos de control pareados demográficamente.
+
+La cinemática del giro intermedio de 180° constituye el dominio cinemático con mayor sensibilidad diagnóstica para evidenciar el compromiso extrapiramidal temprano. Vervoort et al. (2016) y Molero-Mateo et al. (2026) demostraron que la pérdida de disociación entre la cintura escapular y pélvica obliga a los pacientes con Parkinson a ejecutar rotaciones axiales fragmentadas, comúnmente denominadas "giros en bloque". Desde el marco inercial de una IMU dispuesta en la columna lumbar (L5/`BASE-SPINE`), el giro se proyecta predominantemente sobre el eje vertical como una deflexión pronunciada de la velocidad angular de guiñada (*yaw*), $\omega_{\text{yaw}}(t)$. La rotación angular total acumulada $\Delta \theta_{\text{turn}}$ se obtiene mediante la integral temporal de dicha velocidad:
+$$
+\Delta \theta_{\text{turn}} = \int_{t_{\text{start}}}^{t_{\text{end}}} \omega_{\text{yaw}}(t) \, dt \approx \sum_{k=k_{\text{start}}}^{k_{\text{end}}} \omega_{\text{yaw}}[k] \cdot \Delta t
+$$
+donde los límites de integración $t_{\text{start}}$ y $t_{\text{end}}$ se definen a partir del instante en que $\lvert \omega_{\text{yaw}}(t) \rvert$ cruza un umbral dinámico $\gamma_{\text{turn}}$ ajustado al nivel basal de ruido, cumpliéndose la restricción geométrica de inversión de marcha $\lvert \Delta \theta_{\text{turn}} \rvert \ge \pi\,\text{rad}$ ($180^\circ$). A partir de este intervalo, se derivan la **duración del giro** ($\Delta t_{\text{turn}} = t_{\text{end}} - t_{\text{start}}$), la **velocidad angular pico de guiñada** ($\omega_{\text{peak}} = \max_{t \in [t_{\text{start}}, t_{\text{end}}]} \lvert \omega_{\text{yaw}}(t) \rvert$) y el **número de pasos de giro** ($N_{\text{steps\_turn}}$), cuantificado mediante la detección de picos de impacto vertical en las IMUs de los tobillos (`LEFT-ANKLE` y `RIGHT-ANKLE`) dentro de la ventana de rotación. Mientras los sujetos sanos completan el giro de manera continua en 1 a 3 pasos con elevadas velocidades pico ($\omega_{\text{peak}} > 200\,^\circ/\text{s}$), los pacientes con EP demandan tiempos prolongados, cadencias cortas multidireccionales y una marcada atenuación de la velocidad angular pico ($\omega_{\text{peak}} < 120\,^\circ/\text{s}$).
+
+Las transiciones posturales de incorporación (*Sit-to-Stand*) y sentado (*Stand-to-Sit*) permiten evaluar la transferencia de energía mecánica y el control del centro de masa corporal. Zampieri et al. (2010) y Ortega-Bastidas et al. (2023) señalan que los pacientes parkinsonianos manifiestan severas dificultades para vencer la inercia en reposo debido a la bradicinesia axial y al déficit en los músculos extensores de cadera. Para cuantificar la inclinación del tronco en el plano sagital durante la Fase 1, la velocidad angular de cabeceo (*pitch*), $\omega_{\text{pitch}}(t)$, se integra y fusiona con el ángulo acelerométrico cuasi-estático mediante un filtro complementario que previene la deriva matemática:
+$$
+\theta_{\text{pitch}}[k] = \alpha \left( \theta_{\text{pitch}}[k-1] + \omega_{\text{pitch}}[k] \cdot \Delta t \right) + (1 - \alpha) \arctan \left( \frac{a_{\text{AP}}[k]}{\sqrt{a_{\text{V}}[k]^2 + a_{\text{ML}}[k]^2}} \right)
+$$
+donde $\alpha \in [0.95, 0.98]$ balancea la alta resolución dinámica del giróscopo con la estabilidad a bajas frecuencias de la aceleración gravitacional. Esta formulación permite deducir el **rango de movimiento del tronco** ($\text{ROM}_{\text{pitch}} = \max \theta_{\text{pitch}} - \min \theta_{\text{pitch}}$), la **velocidad angular pico de flexión** ($\omega_{\text{flex\_peak}} = \max \omega_{\text{pitch}}$) y la **duración de la transición a bípedo** ($\Delta t_{\text{STS}}$). Análogamente, en la Fase 5, el **impacto vertical al sentarse** ($a_{\text{impact}}$) se registra a partir del pico de deceleración vertical en L5 ($a_{\text{impact}} = \max \lvert a_{\text{V}}(t) \rvert$); en personas sanas este impacto es amortiguado por contracción muscular excéntrica controlada, mientras que en pacientes con déficit postural se observa un colapso abrupto contra la silla (*plopping*).
+
+La caracterización de la locomoción rectilínea (Fases 2 y 4) exige cuantificar la estabilidad dinámica, la regularidad periódica y la variabilidad espaciotemporal del paso. Caramia et al. (2018) y Welzel et al. (2021) demuestran que la reducción de la longitud de paso y la pérdida de automaticidad constituyen sellos patológicos cardinales de la enfermedad. Para extraer la regularidad armónica a partir de la aceleración vertical centrada de la espina lumbar $x[n] = a_{\text{V}}[n] - \bar{a}_{\text{V}}$, se computa la función de autocorrelación normalizada e insesgada sobre la ventana de marcha de $N$ muestras:
+$$
+R_{xx}[m] = \frac{1}{(N - m) \cdot \sigma_x^2} \sum_{n=0}^{N - m - 1} x[n] \cdot x[n + m]
+$$
+El primer pico no nulo $R_{xx}[m_1]$ en el retardo temporal $m_1 > 0$ cuantifica la **regularidad del paso** (*step regularity*), correspondiente al semiciclo entre pasos alternos (contacto izquierdo-derecho), mientras que el segundo pico dominante $R_{xx}[m_2]$ en $m_2 \approx 2m_1$ mide la **regularidad de la zancada** (*stride regularity*), correspondiente al ciclo de marcha completo del mismo miembro inferior. La simetría armónica de la marcha se formula como el cociente $\text{Simetría} = R_{xx}[m_1] / R_{xx}[m_2]$. Simultáneamente, a partir de la detección de los instantes discretos de contacto inicial del talón (*Heel Strike*) $\{t_1, t_2, \dots, t_K\}$, se define el intervalo de tiempo de paso $\Delta t_k = t_{k+1} - t_k$, a partir del cual se extrae la **variabilidad del tiempo de paso** mediante el coeficiente de variación porcentual ($CV_{\text{step}}$):
+$$
+CV_{\text{step}} = \left( \frac{\sigma_{\Delta t}}{\mu_{\Delta t}} \right) \times 100\% = \left( \frac{\sqrt{\frac{1}{K-2}\sum_{k=1}^{K-1} (\Delta t_k - \mu_{\Delta t})^2}}{\frac{1}{K-1}\sum_{k=1}^{K-1} \Delta t_k} \right) \times 100\%
+$$
+En sujetos de control, $CV_{\text{step}} < 3\%$, mientras que en la EP se incrementa significativamente ($CV_{\text{step}} > 6\%$), reflejando inestabilidad en la marcha y riesgo inminente de caídas.
+
+El análisis espectral de acelerometría y la cinemática de miembros superiores completan el perfil multivariado al capturar episodios paroxísticos y asimetrías tempranas del movimiento. Russo et al. (2025) y van Kersbergen et al. (2021) resaltan que el congelamiento de la marcha (*Freezing of Gait*, FoG) y la reducción unilateral del braceo son biomarcadores de alto valor pronóstico. El **índice de congelamiento de la marcha** ($\text{FoG Index}$) se formula analíticamente a partir de la densidad espectral de potencia $P_{xx}(f)$ de la aceleración anteroposterior o vertical, estimada mediante el método de Welch:
+$$
+\text{FoG Index} = \frac{\int_{3\,\text{Hz}}^{8\,\text{Hz}} P_{xx}(f) \, df}{\int_{0.5\,\text{Hz}}^{3\,\text{Hz}} P_{xx}(f) \, df}
+$$
+donde el denominador captura la potencia en la banda fundamental de locomoción voluntaria ($0.5 - 3\,\text{Hz}$) y el numerador integra la energía de temblor patológico y parálisis motora ($3 - 8\,\text{Hz}$). Por su parte, la inclusión de sensores inerciales en ambas muñecas (`LEFT-HAND` y `RIGHT-HAND`) permite cuantificar la amplitud angular de balanceo para cada hemicuerpo ($\theta_{\text{swing}}^{\text{izq}}, \theta_{\text{swing}}^{\text{der}}$) integrando la velocidad angular sagital, derivando el **índice de asimetría de balanceo de brazos** ($ASA$):
+$$
+ASA = \frac{\lvert \theta_{\text{swing}}^{\text{izq}} - \theta_{\text{swing}}^{\text{der}} \rvert}{\max(\theta_{\text{swing}}^{\text{izq}}, \theta_{\text{swing}}^{\text{der}})} \times 100\%
+$$
+Este parámetro presenta una destacada capacidad discriminante en estadios precoces de Hoehn y Yahr, donde la afectación neurodegenerativa de la vía nigroestriatal suele debutar con asimetría unilateral en las extremidades superiores antes de propagarse simétricamente a los miembros inferiores.
+
+La Tabla 1 sintetiza las quince variables cinemáticas y biomecánicas de oro seleccionadas a partir del estado del arte, detallando su fase de extracción en el test TUG, su modelado matemático con sensores IMU, su comportamiento clínico reportado en pacientes con Parkinson y el artículo científico que respalda su pertinencia analítica.
+
+<br>
+
+**Tabla 1**
+
+*Variables espaciotemporales, cinemáticas y biomecánicas clave del test TUG instrumentado identificadas en la literatura científica*
+
+| No. | Variable Biomecánica / Cinemática | Fase TUG | Expresión Matemática / Algoritmo Inercial | Sensor Requerido | Alteración en EP | Estudio de Respaldo |
+| :---: | :--- | :---: | :--- | :---: | :---: | :--- |
+| 1 | **Duración del Giro 180°** (*Turn Duration*) | F3 | $\Delta t_{\text{turn}} = t_{\text{end}} - t_{\text{start}} \quad (\lvert \Delta \theta \rvert \ge \pi)$ | `BASE-SPINE` | Aumenta ($\uparrow$) | Zampieri et al. (2010); Molero-Mateo et al. (2026) |
+| 2 | **Velocidad Pico de Guiñada** (*Peak Yaw Velocity*) | F3 | $\omega_{\text{peak}} = \max_{t \in \text{F3}} \lvert \omega_{\text{yaw}}(t) \rvert$ | `BASE-SPINE` | Disminuye ($\downarrow$) | Vervoort et al. (2016) |
+| 3 | **Pasos durante el Giro** (*Turn Step Count*) | F3 | $N_{\text{steps\_turn}} = \sum \mathbf{1}_{\{t_k \in [t_{\text{start}}, t_{\text{end}}]\}}$ | Tobillos L/R | Aumenta ($\uparrow$) | Molero-Mateo et al. (2026) |
+| 4 | **Velocidad de Marcha** (*Gait Speed*) | F2, F4 | $v_{\text{gait}} = d_{\text{path}} / \Delta t_{\text{marcha}} = 3.0\,\text{m} / \Delta t$ | L5 / Tobillos | Disminuye ($\downarrow$) | Caramia et al. (2018); van Kersbergen et al. (2021) |
+| 5 | **Longitud de Paso Estimada** (*Step Length*) | F2, F4 | $L_{\text{step}} = 2\sqrt{2 \cdot l_{\text{leg}} \cdot h_{\text{CoM}} - h_{\text{CoM}}^2}$ | `BASE-SPINE` | Disminuye ($\downarrow$) | Welzel et al. (2021); Caramia et al. (2018) |
+| 6 | **Variabilidad del Tiempo de Paso** (*Step Time CV*) | F2, F4 | $CV_{\text{step}} = (\sigma_{\Delta t} / \mu_{\Delta t}) \times 100\%$ | Tobillos L/R | Aumenta ($\uparrow$) | Molero-Mateo et al. (2026) |
+| 7 | **Regularidad de Marcha** (*Harmonic Regularity*) | F2, F4 | $R_{xx}[m_1] = \frac{1}{(N-m_1)\sigma_x^2}\sum x[n]x[n+m_1]$ | `BASE-SPINE` | Disminuye ($\downarrow$) | Ortega-Bastidas et al. (2023) |
+| 8 | **Duración Transición a Bípedo** (*STS Duration*) | F1 | $\Delta t_{\text{STS}} = t_{\text{stand\_stable}} - t_{\text{flex\_start}}$ | `BASE-SPINE` | Aumenta ($\uparrow$) | Zampieri et al. (2010); Molero-Mateo et al. (2026) |
+| 9 | **Velocidad Pico Flexión Tronco** (*Peak Flexion Velocity*) | F1 | $\omega_{\text{flex\_peak}} = \max_{t \in \text{F1}} \omega_{\text{pitch}}(t)$ | `BASE-SPINE` | Disminuye ($\downarrow$) | Zampieri et al. (2010) |
+| 10 | **Impacto Vertical Sentarse** (*Peak Deceleration*) | F5 | $a_{\text{impact}} = \max_{t \in \text{F5}} \lvert a_{\text{V}}(t) \rvert$ | `BASE-SPINE` | Aumenta ($\uparrow$) | Ortega-Bastidas et al. (2023) |
+| 11 | **Asimetría de Balanceo de Brazos** (*Arm Swing Asymmetry*) | F2, F4 | $ASA = \frac{\lvert \theta_{\text{sw\_izq}} - \theta_{\text{sw\_der}} \rvert}{\max(\theta_{\text{sw\_izq}}, \theta_{\text{sw\_der}})} \times 100\%$ | Muñecas L/R | Aumenta ($\uparrow$) | van Kersbergen et al. (2021); Russo et al. (2025) |
+| 12 | **Índice de Congelamiento** (*FoG Index*) | F2, F3, F4 | $\text{FoG Index} = \frac{\int_{3}^{8} P_{xx}(f)df}{\int_{0.5}^{3} P_{xx}(f)df}$ | Tobillos / L5 | Aumenta ($\uparrow$) | Weiss et al. (2020); Russo et al. (2025) |
+| 13 | **Ancho de Paso** (*Step Width*) | F2, F4 | Descartada en IMU pura (requiere cámara) | Óptico RGB-D | Aumenta ($\uparrow$) | Russo et al. (2025) |
+| 14 | **Duración Total del TUG** (*Total TUG Time*) | Global | $T_{\text{total}} = t_{\text{sit\_end}} - t_{\text{STS\_start}}$ | L5 / Tobillos | Aumenta ($\uparrow$) | Podsiadlo & Richardson (1991); Zampieri et al. (2010) |
+| 15 | **Rango de Inclinación de Tronco** (*Trunk Pitch ROM*) | F1, F5 | $\text{ROM}_{\text{pitch}} = \max \theta_{\text{pitch}} - \min \theta_{\text{pitch}}$ | `BASE-SPINE` | Disminuye ($\downarrow$) | Molero-Mateo et al. (2026) |
+
+*Nota.* Adaptado y sintetizado a partir de los estudios fundacionales de Zampieri et al. (2010), Vervoort et al. (2016), Caramia et al. (2018), Molero-Mateo et al. (2026), Ortega-Bastidas et al. (2023), van Kersbergen et al. (2021) y Russo et al. (2025).
+
+<!--
+### Anexo Técnico: Mapa de Afirmación-Evidencia (Claim-Evidence Map)
+- Claim 1: "La duración global del TUG enmascara fallas biomecánicas específicas por fase en la EP." -> Evidencia: Mollinedo y Cancela (2020), p. 308; Zampieri et al. (2010), p. 172.
+- Claim 2: "La cinemática del giro de 180° presenta la mayor sensibilidad para identificar compromiso motor temprano (giros en bloque)." -> Evidencia: Vervoort et al. (2016), Fig. 3 y p. 8; Molero-Mateo et al. (2026), Tabla 2 y p. 6.
+- Claim 3: "La velocidad de flexión y el rango angular de tronco decrecen en el levantamiento por acinesia y rigidez axial." -> Evidencia: Zampieri et al. (2010), p. 173; Molero-Mateo et al. (2026), p. 8.
+- Claim 4: "La autocorrelación de la aceleración vertical en L5 desacopla la regularidad del paso (m1) de la zancada (m2)." -> Evidencia: Ortega-Bastidas et al. (2023), p. 3432.
+- Claim 5: "La variabilidad del tiempo de paso (CV) aumenta en EP (>6%) reflejando pérdida de control rítmico espinal." -> Evidencia: Molero-Mateo et al. (2026), p. 7; Welzel et al. (2021), p. 2296.
+- Claim 6: "El FoG Index como cociente espectral (3-8 Hz sobre 0.5-3 Hz) cuantifica episodios de congelamiento de la marcha." -> Evidencia: Weiss et al. (2020); Russo et al. (2025), p. 345.
+- Claim 7: "La asimetría del balanceo de brazos es uno de los biomarcadores más precoces de la EP." -> Evidencia: van Kersbergen et al. (2021), p. 331; Caramia et al. (2018), p. 1768.
+-->
+
 # Referencias
 
 Caramia, C., Torricelli, D., Schmid, M., Muñoz-González, A.,
