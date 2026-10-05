@@ -172,17 +172,17 @@ En consecuencia, el problema central de ingeniería radica en la ausencia de un 
 
 ## Objetivo general
 
-Desarrollar un algoritmo de clasificación basado en el análisis conjunto de señales inerciales (IMU) y datos de cámaras de profundidad (RGB-D) extraídos de las fases de la prueba *Timed Up and Go* (TUG), con el fin de identificar patrones motores que apoyen el diagnóstico objetivo de la enfermedad de Parkinson.
+Desarrollar un algoritmo de clasificación para diferenciar pacientes con enfermedad de Parkinson y sujetos de control a partir de variables biomecánicas extraídas de cada fase de la prueba *Timed Up and Go* (TUG) mediante el análisis conjunto de señales inerciales (IMU) y cámaras de profundidad (RGB-D), integrándolo en la plataforma VIMOV como herramienta de apoyo al diagnóstico clínico objetivo.
 
 ## Objetivos específicos
 
-- Identificar y perfilar el dataset bimodal (IMU y RGB-D) existente de aproximadamente 70 participantes, cuantificando la distribución de clases (pacientes frente a controles), el balance de los datos y la disponibilidad de las señales por fase, entregando un reporte de viabilidad para el análisis computacional.
+- **OE1:** Realizar la exploración del conjunto de datos bimodal (señales inerciales IMU y video RGB-D) adquirido en brigadas durante la prueba *Timed Up and Go* (TUG), identificando patrones de movimiento y variables biomecánicas relevantes de acuerdo con la literatura científica.
 
-- Explorar y documentar las técnicas reportadas en la literatura científica sobre la prueba TUG instrumentada, para identificar el conjunto de variables biomecánicas (cinemáticas y espaciotemporales) con mayor capacidad discriminatoria.
+- **OE2:** Validar el algoritmo de segmentación de fases del proyecto predecesor sobre el conjunto de datos adquirido en brigadas, ajustando el procesamiento a la última versión de los sistemas de adquisición de datos.
 
-- Analizar los datos tomados en campo para extraer las variables biomecánicas previamente identificadas en la revisión de literatura, aplicando técnicas algorítmicas sobre cada subfase segmentada de la prueba.
+- **OE3:** Extraer las variables biomecánicas (espaciotemporales y cinemáticas) priorizadas durante la exploración de datos, desarrollando el algoritmo de clasificación para la diferenciación de patrones motores entre pacientes con enfermedad de Parkinson y sujetos de control.
 
-- Implementar un algoritmo de clasificación que permita diferenciar los patrones motores entre pacientes con enfermedad de Parkinson y sujetos de control a partir de las métricas extraídas.
+- **OE4:** Integrar los algoritmos de segmentación y clasificación de la prueba TUG en la plataforma VIMOV, facilitando la ingesta, ejecución computacional y persistencia de las métricas obtenidas.
 
 # Alcance
 
