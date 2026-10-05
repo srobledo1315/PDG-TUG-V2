@@ -176,7 +176,7 @@ Desarrollar un algoritmo de clasificación para diferenciar pacientes con enferm
 
 ## Objetivos específicos
 
-- **OE1:** Realizar la exploración del conjunto de datos bimodal (señales inerciales IMU y video RGB-D) adquirido en brigadas durante la prueba *Timed Up and Go* (TUG), identificando patrones de movimiento y variables biomecánicas relevantes de acuerdo con la literatura científica.
+- **OE1:** Realizar la exploración del conjunto de datos bimodal (señales inerciales IMU y video RGB-D) conformado por aproximadamente 70 muestras de diferentes participantes (pacientes con enfermedad de Parkinson y sujetos de control) adquiridas en brigadas durante la prueba *Timed Up and Go* (TUG), identificando patrones de movimiento y variables biomecánicas relevantes de acuerdo con la literatura científica.
 
 - **OE2:** Validar el algoritmo de segmentación de fases del proyecto predecesor sobre el conjunto de datos adquirido en brigadas, ajustando el procesamiento a la última versión de los sistemas de adquisición de datos.
 
